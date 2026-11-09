@@ -10,7 +10,9 @@
 
 # Skills For Real Engineers
 
-[![skills.sh](https://skills.sh/b/mattpocock/skills)](https://skills.sh/mattpocock/skills)
+> This is a personal fork of [mattpocock/skills](https://github.com/mattpocock/skills). See [What is different in this fork](#what-is-different-in-this-fork) for the changes. The GitHub and skills.sh install commands below point at this fork; the official Claude Code marketplace still installs the upstream plugin.
+
+[![GitHub](https://img.shields.io/badge/GitHub-BanShan--Alec%2Fskills-181717?logo=github)](https://github.com/BanShan-Alec/skills)
 
 My agent skills that I use every day to do real engineering - not vibe coding.
 
@@ -22,9 +24,25 @@ If you want to keep up with changes to these skills, and any new ones I create, 
 
 [Sign Up To The Newsletter](https://www.aihero.dev/s/skills-newsletter)
 
+## What is different in this fork
+
+This fork keeps the upstream discipline and removes the parts I do not use.
+
+| Area | Upstream | This fork |
+| --- | --- | --- |
+| Skills | 39: 27 promoted, 8 in-progress, 4 misc | 28 promoted |
+| `brainstorming` | Not included | A user-invoked front door for a vague idea |
+| Skill descriptions | English | Concise Chinese, with `[matt]` on Matt skills |
+| Docs links | Absolute `aihero.dev` links | Relative links that resolve on GitHub |
+| Install routes | `mattpocock/skills` | `BanShan-Alec/skills` for GitHub and skills.sh |
+
+`brainstorming` is the only added skill. It keeps the open exploration, then hands the decision tree to `grilling`, records terms and ADRs through `domain-modeling` when they qualify, and stops at an approved design. It writes no design document or plan and has no visual companion; run `/to-spec` and `/to-tickets` after it.
+
+The `misc/` and `in-progress/` buckets are removed, so the plugin and the docs cover only the promoted set.
+
 ## Installation (30-second setup)
 
-A plugin updates itself. [skills.sh](https://skills.sh/mattpocock/skills) copies editable files into your project, and you update them by hand. Pick one per agent, because installing both gives you every skill twice.
+A plugin updates itself. The skills.sh installer copies editable files into your project, and you update them by hand. Pick one per agent, because installing both gives you every skill twice.
 
 ### 1. Get the skills
 
@@ -35,7 +53,7 @@ A plugin updates itself. [skills.sh](https://skills.sh/mattpocock/skills) copies
 claude plugin install mattpocock-skills@claude-plugins-official
 ```
 
-Updates itself by default.
+Updates itself by default. This route installs the upstream plugin from the official marketplace. For this fork, use the GitHub or skills.sh route below.
 
 </details>
 
@@ -43,7 +61,7 @@ Updates itself by default.
 <summary><strong>Codex</strong></summary>
 
 ```bash
-codex plugin marketplace add mattpocock/skills
+codex plugin marketplace add BanShan-Alec/skills
 codex plugin add mattpocock-skills@mattpocock
 ```
 
@@ -55,7 +73,7 @@ Updates itself at startup.
 <summary><strong>GitHub Copilot</strong> (CLI and VS Code)</summary>
 
 ```bash
-copilot plugin marketplace add mattpocock/skills
+copilot plugin marketplace add BanShan-Alec/skills
 copilot plugin install mattpocock-skills@mattpocock
 ```
 
@@ -64,12 +82,12 @@ Then, once, add to `~/.copilot/settings.json`:
 ```json
 {
   "extraKnownMarketplaces": {
-    "mattpocock": { "source": { "source": "github", "repo": "mattpocock/skills" }, "autoUpdate": true }
+    "mattpocock": { "source": { "source": "github", "repo": "BanShan-Alec/skills" }, "autoUpdate": true }
   }
 }
 ```
 
-In VS Code, run **Chat: Install Plugin From Source** and enter `https://github.com/mattpocock/skills`. It updates daily.
+In VS Code, run **Chat: Install Plugin From Source** and enter `https://github.com/BanShan-Alec/skills`. It updates daily.
 
 </details>
 
@@ -77,8 +95,8 @@ In VS Code, run **Chat: Install Plugin From Source** and enter `https://github.c
 <summary><strong>Gemini CLI</strong> (manual updates)</summary>
 
 ```bash
-gemini skills install https://github.com/mattpocock/skills.git --path skills/engineering
-gemini skills install https://github.com/mattpocock/skills.git --path skills/productivity
+gemini skills install https://github.com/BanShan-Alec/skills.git --path skills/engineering
+gemini skills install https://github.com/BanShan-Alec/skills.git --path skills/productivity
 ```
 
 Re-run both commands to update.
@@ -89,7 +107,7 @@ Re-run both commands to update.
 <summary><strong>Any other agent, or editable files</strong> (manual updates)</summary>
 
 ```bash
-npx skills@latest add mattpocock/skills -a <agent>  # cursor, opencode, devin, windsurf, amp, pi; omit -a to choose
+npx skills@latest add BanShan-Alec/skills -a <agent>  # cursor, opencode, devin, windsurf, amp, pi; omit -a to choose
 ```
 
 When the installer asks which skills to take, include `setup-matt-pocock-skills`. To update, run `npx skills@latest update`, and re-run `add` to pick up new skills.
