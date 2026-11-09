@@ -1,6 +1,7 @@
 ---
 name: loop-me
-description: Grill me about specs for the workflows I want to build, within this workspace.
+description: >-
+  [matt] 围绕你想构建的工作流规格进行追问式设计。
 disable-model-invocation: true
 argument-hint: "A workflow to design, or nothing to go find one"
 ---

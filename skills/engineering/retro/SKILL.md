@@ -1,6 +1,7 @@
 ---
 name: retro
-description: "Conduct a retrospective on a coding session."
+description: >-
+  [matt] 对一次编码会话做复盘，提出改进代理工作环境的建议。
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,7 @@
 ---
 name: chief-of-staff
-description: Pursue a long-running goal in a single session by co-ordinating subagents.
+description: >-
+  [matt] 在单个会话里协调子代理和计划，持续推进一个长期目标。
 disable-model-invocation: true
 ---
 

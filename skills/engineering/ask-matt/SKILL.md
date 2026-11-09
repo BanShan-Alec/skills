@@ -1,6 +1,7 @@
 ---
 name: ask-matt
-description: Ask which skill or flow fits your situation. A router over the skills in this repo.
+description: >-
+  [matt] 不知道该用哪个技能时，帮你挑选合适的技能或流程。
 disable-model-invocation: true
 ---
 
@@ -10,7 +11,7 @@ You don't remember every skill, so ask.
 
 Before stating what a skill does or recommending a step be skipped, read that skill's SKILL.md: the summaries here are for orientation only.
 
-A **flow** is a path through the skills. Most paths run along one **main flow**, and two **on-ramps** merge onto it. Everything else is standalone, or a vocabulary layer that runs underneath.
+A **flow** is a path through the skills. Most paths run along one **main flow**, and several **on-ramps** merge onto it. Everything else is standalone, or a vocabulary layer that runs underneath.
 
 ## The main flow: idea → ship
 
@@ -42,6 +43,8 @@ The limit on this is the **[smart zone](https://www.aihero.dev/ai-coding-diction
 ## On-ramps
 
 A starting situation that generates work, then merges onto the main flow.
+
+- **A vague idea with no design yet** → **`/brainstorming`**. It explores the intent in conversation, hands the decision tree to `grilling`, records terms and ADRs through `domain-modeling` when they qualify, and stops at an approved design. Merge onto the main flow at **`/to-spec`**, then **`/to-tickets`**.
 
 - **Bugs and requests piling up** → **`/triage`**. It moves issues through triage roles and produces agent-ready issues, which **`/implement`** later picks up.
 

@@ -1,6 +1,7 @@
 ---
 name: writing-beats
-description: Writing, exploit; assemble raw material into a journey of beats, grounding each term before a beat leans on it.
+description: >-
+  [matt] 写作（展开）：把素材组织成一段段有铺垫、有落点的旅程，每个术语先解释再使用。
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,7 @@
 ---
 name: diagnosing-bugs
-description: Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something broken/throwing/failing/slow.
+description: >-
+  [matt] 难缠 bug 和性能回归的诊断流程。遇到报错、失败、变慢，或用户说「诊断/调试一下」时使用。
 ---
 
 # Diagnosing Bugs

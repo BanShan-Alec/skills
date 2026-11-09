@@ -1,0 +1,5 @@
+interface:
+  display_name: "Brainstorming"
+  short_description: "Sharpen a vague idea into an approved design before the spec"
+policy:
+  allow_implicit_invocation: false

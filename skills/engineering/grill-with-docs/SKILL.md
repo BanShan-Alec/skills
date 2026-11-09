@@ -1,6 +1,7 @@
 ---
 name: grill-with-docs
-description: A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go.
+description: >-
+  [matt] 通过连续追问打磨方案或设计，并同步产出 ADR 和术语表。
 disable-model-invocation: true
 ---
 
