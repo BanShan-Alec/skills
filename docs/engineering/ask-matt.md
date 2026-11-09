@@ -10,9 +10,9 @@ You invoke this by typing `/ask-matt`; the agent won't reach for it on its own.
 
 | Your situation | What the router gives back |
 | --- | --- |
-| An idea, and no idea where to start | The head of the main flow, and whether the build is small enough to skip the spec |
+| An idea, and no idea where to start | Whether to start with [brainstorming](https://aihero.dev/skills-brainstorming) or [grill-with-docs](https://aihero.dev/skills-grill-with-docs), and whether the build is small enough to skip the spec |
 | Bugs and requests arriving from other people | The [triage](https://aihero.dev/skills-triage) on-ramp, and why [tickets](https://www.aihero.dev/ai-coding-dictionary/ticket) you generated yourself don't belong on it |
-| Two skills that look interchangeable | The line between them, and it is usually one concrete test rather than a matter of taste. [grill-me](https://aihero.dev/skills-grill-me) or [grill-with-docs](https://aihero.dev/skills-grill-with-docs) turns on whether you are in a working directory; [grill-with-docs](https://aihero.dev/skills-grill-with-docs) or [wayfinder](https://aihero.dev/skills-wayfinder) turns on whether the effort fits one session |
+| Two skills that look interchangeable | The line between them, and it is usually one concrete test rather than a matter of taste. [brainstorming](https://aihero.dev/skills-brainstorming) or [grill-with-docs](https://aihero.dev/skills-grill-with-docs) turns on whether a design already exists; [grill-me](https://aihero.dev/skills-grill-me) or [grill-with-docs](https://aihero.dev/skills-grill-with-docs) turns on whether you are in a working directory; [grill-with-docs](https://aihero.dev/skills-grill-with-docs) or [wayfinder](https://aihero.dev/skills-wayfinder) turns on whether the effort fits one session |
 | A long session and a decision about the [context](https://www.aihero.dev/ai-coding-dictionary/context) | The ordered tree over the five options at a phase boundary |
 | A skill you have already picked | Nothing useful. Invoke that skill directly. |
 
@@ -26,8 +26,8 @@ The tracker-dependent routes (triage, `to-spec`, `to-tickets`, `implement`) assu
 
 The skill's leading word is **flow**, a path *through* the skills rather than a single skill. When you name your situation, the router places you at a step on a flow. That is a different answer from "here is the skill that matches your keywords". There are five kinds of route, and the skill itself describes them in full:
 
-- **The main flow**, idea to ship. Grill, spec, tickets, implement (one ticket at a time, or the whole task graph in parallel with [implement-spec](https://aihero.dev/skills-implement-spec)), review, then [retro](https://aihero.dev/skills-retro), which feeds what the build taught back into the agent's environment. It has two branches. One is a prototype detour, for when a question needs runnable code to settle it. The other is the spec-and-tickets split, which is only worth its cost when the build spans more than one session.
-- **On-ramps**, for a situation that generates work and then merges onto the main flow: incoming bug reports, something broken, or an effort too foggy and too large to hold in one session.
+- **The main flow**, idea to ship. A vague idea enters at [brainstorming](https://aihero.dev/skills-brainstorming) and leaves at an approved design; a design that already exists enters at [grill-with-docs](https://aihero.dev/skills-grill-with-docs). Then spec, tickets, implement (one ticket at a time, or the whole task graph in parallel with [implement-spec](https://aihero.dev/skills-implement-spec)), review, then [retro](https://aihero.dev/skills-retro), which feeds what the build taught back into the agent's environment. It has two branches. One is a prototype detour, for when a question needs runnable code to settle it. The other is the spec-and-tickets split, which is only worth its cost when the build spans more than one session.
+- **On-ramps**, for a situation that generates work and then merges onto the main flow: a vague idea that needs a design, incoming bug reports, something broken, or an effort too foggy and too large to hold in one session.
 - **Codebase health**, upkeep rather than feature work. [improve-codebase-architecture](https://aihero.dev/skills-improve-codebase-architecture) surveys the code for deepening opportunities, and each one it finds re-enters the main flow as an idea.
 - **Standalones**, which sit off every flow and which you use on their own: the prototype, the questionnaire, the research run.
 - **A vocabulary layer underneath**, the two references the other skills pull in when the words rather than the process are the problem.
@@ -47,6 +47,10 @@ The skill's other key idea is the **phase boundary**. A phase is a chunk of work
 People often get two of these wrong, which is why the router gives the order and not only the list. `/handoff` looks like the general way to move between context windows, but it is not. All it gives you is portability. `/compact` is the last option in the tree, not the first, because each of the four options above it is cheaper or more precise.
 
 ## Common questions
+
+**Should I use `brainstorming`, `grill-me`, or `grill-with-docs`?**
+
+`brainstorming` when the idea is still vague and no design exists. It does the open exploration, runs the decision tree through `grilling`, and stops at an approved design; it then tells you to run `/to-spec`, then `/to-tickets`. `grill-with-docs` when a design or plan already exists inside a repo: it pressure-tests it and writes `GLOSSARY.md` or ADRs when they qualify. `grill-me` when you are outside a repo or want no files at all: it is the same interview with no paper trail. `brainstorming` never writes a design document or a plan; the spec and ticket flow owns those.
 
 **Isn't there just a list of the skills in the right order?**
 
@@ -81,11 +85,12 @@ Check the changelog for a rename before assuming it is gone. `writing-great-skil
 - It ends by naming what to type and stops there, instead of starting the work itself.
 - The route it gives back mentions where to clear or compact context and where you are expected to review, not just a list of skill names.
 - Where two skills are close, it says which one and why the other is wrong for you.
+- It separates brainstorming, grill-me, and grill-with-docs by whether a design already exists, whether there is a working directory, and whether you want a paper trail.
 - Any claim it makes about another skill's behaviour shows up in the trace as it reading that skill's `SKILL.md`.
 - You recognise your own situation in what it hands back, rather than the nearest generic scenario.
 
 ## Where it fits
 
-`ask-matt` is a **standalone router** that sits over the whole set. It is never a step in a chain. It points into every chain, and the other docs pages link back to it so none of them has to redraw the graph. From here you most often land on [grill-with-docs](https://aihero.dev/skills-grill-with-docs), the head of the main flow, or [triage](https://aihero.dev/skills-triage), the on-ramp for work that arrived rather than work you started.
+`ask-matt` is a **standalone router** that sits over the whole set. It is never a step in a chain. It points into every chain, and the other docs pages link back to it so none of them has to redraw the graph. From here you most often land on [brainstorming](https://aihero.dev/skills-brainstorming) when the idea is still vague, on [grill-with-docs](https://aihero.dev/skills-grill-with-docs) when a design already exists, or on [triage](https://aihero.dev/skills-triage), the on-ramp for work that arrived rather than work you started.
 
 It is a [secondary source](https://www.aihero.dev/ai-coding-dictionary/secondary-source) over the skills it describes. Where the router and a `SKILL.md` disagree, the `SKILL.md` is right.
