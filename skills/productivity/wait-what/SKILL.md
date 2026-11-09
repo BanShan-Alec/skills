@@ -1,6 +1,7 @@
 ---
 name: wait-what
-description: "Stop. That last message did not land: re-pitch it."
+description: >-
+  [matt] 上一段没听懂时，要求重新讲解：补背景，用简化技术英语和项目术语再说一遍。
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,7 @@
 ---
 name: pr
-description: "Use when writing a PR body."
+description: >-
+  [matt] 撰写 Pull Request 描述。
 metadata:
   credits:
     skill: show-me

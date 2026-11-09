@@ -15,10 +15,10 @@ Several skills are close to it. Pick by the problem you have:
 | The problem | The skill |
 |---|---|
 | The shape of one module: its interface, its seam, its depth | `codebase-design` |
-| The *words of the domain*: "account" means three things, two people mean different things by "cancellation" | [domain-modeling](https://aihero.dev/skills-domain-modeling) |
-| You don't yet know *which* module to redesign | [improve-codebase-architecture](https://aihero.dev/skills-improve-codebase-architecture) (the survey that finds candidates) |
-| You want the design argued with, not just named | [grilling](https://aihero.dev/skills-grilling) |
-| There's a concrete behaviour to build and you want tests that survive a refactor | [tdd](https://aihero.dev/skills-tdd) |
+| The *words of the domain*: "account" means three things, two people mean different things by "cancellation" | [domain-modeling](./domain-modeling.md) |
+| You don't yet know *which* module to redesign | [improve-codebase-architecture](./improve-codebase-architecture.md) (the survey that finds candidates) |
+| You want the design argued with, not just named | [grilling](../productivity/grilling.md) |
+| There's a concrete behaviour to build and you want tests that survive a refactor | [tdd](./tdd.md) |
 
 ## The vocabulary
 
@@ -49,7 +49,7 @@ Two supporting files go further, and the skill reads them on demand rather than 
 
 **How do I actually build a deep module in TypeScript?**
 
-This is the most-asked question about the skill and the skill does not answer it. It defines what a deep module *is*; it says nothing about how to stop a stray import from reaching past the interface. [Issue #458](https://github.com/mattpocock/skills/issues/458) put it plainly: "let's say we're happy with the interface, it hides the details, etc. But how do we enforce it? I think without linting or clear guardrails, humans and LLMs alike will start making it messy over time." The answer in that thread gave three options: wrap it in a class or IIFE and accept that the class gets enormous; make it a package in a monorepo and accept the monorepo tooling; or use a linter like [dependency-cruiser](https://github.com/sverweij/dependency-cruiser) to forbid imports that bypass the interface. Of these mechanisms, Effect is the best and dependency-cruiser the second-best. There is a `setup-ts-deep-modules` skill in the repo's `in-progress/` bucket that lays down a `src/packages/<name>/index.ts` convention, but it is a beta-channel skill with no docs page, and it ships no lint rule.
+This is the most-asked question about the skill and the skill does not answer it. It defines what a deep module *is*; it says nothing about how to stop a stray import from reaching past the interface. [Issue #458](https://github.com/mattpocock/skills/issues/458) put it plainly: "let's say we're happy with the interface, it hides the details, etc. But how do we enforce it? I think without linting or clear guardrails, humans and LLMs alike will start making it messy over time." The answer in that thread gave three options: wrap it in a class or IIFE and accept that the class gets enormous; make it a package in a monorepo and accept the monorepo tooling; or use a linter like [dependency-cruiser](https://github.com/sverweij/dependency-cruiser) to forbid imports that bypass the interface. Of these mechanisms, Effect is the best and dependency-cruiser the second-best. There is no shipped skill for this; wire dependency-cruiser directly.
 
 **I pointed a session at it and it burned 100k [tokens](https://www.aihero.dev/ai-coding-dictionary/token) redesigning things I never asked about.**
 
@@ -85,4 +85,4 @@ People have proposed those. [Issue #180](https://github.com/mattpocock/skills/is
 
 ## Where it fits
 
-`codebase-design` is a **reach-for-it-anytime standalone**, and the vocabulary layer underneath the engineering skills rather than a step in any chain. Its closest neighbour is [domain-modeling](https://aihero.dev/skills-domain-modeling), the parallel reference for the *problem domain*'s words rather than the module's shape. The two are usually wanted together, since naming a deep module well needs both. [improve-codebase-architecture](https://aihero.dev/skills-improve-codebase-architecture) is the other: it surveys a codebase for deepening candidates and writes every one of them in this glossary, so it finds the module and you design it in this skill's words. When you're unsure which skill or flow fits, [ask-matt](https://aihero.dev/skills-ask-matt) routes you.
+`codebase-design` is a **reach-for-it-anytime standalone**, and the vocabulary layer underneath the engineering skills rather than a step in any chain. Its closest neighbour is [domain-modeling](./domain-modeling.md), the parallel reference for the *problem domain*'s words rather than the module's shape. The two are usually wanted together, since naming a deep module well needs both. [improve-codebase-architecture](./improve-codebase-architecture.md) is the other: it surveys a codebase for deepening candidates and writes every one of them in this glossary, so it finds the module and you design it in this skill's words. When you're unsure which skill or flow fits, [ask-matt](./ask-matt.md) routes you.

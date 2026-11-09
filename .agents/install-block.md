@@ -29,7 +29,7 @@ Nobody has run Auggie, Droid, Qwen or Goose against this repo, so they stay on s
 claude plugin install mattpocock-skills@claude-plugins-official
 ```
 
-Updates itself by default.
+Updates itself by default. This route installs the upstream plugin from the official marketplace. For this fork, use the GitHub or skills.sh route.
 
 </canonical-block>
 
@@ -38,7 +38,7 @@ Updates itself by default.
 <canonical-block name="codex">
 
 ```bash
-codex plugin marketplace add mattpocock/skills
+codex plugin marketplace add BanShan-Alec/skills
 codex plugin add mattpocock-skills@mattpocock
 ```
 
@@ -48,12 +48,12 @@ Updates itself at startup.
 
 ## GitHub Copilot (CLI and VS Code)
 
-Use the marketplace, not `copilot plugin install mattpocock/skills`. Copilot has deprecated direct repo installs, and they can't auto-update. The `extraKnownMarketplaces` entry follows the documented schema, but nobody has run it yet.
+Use the marketplace, not `copilot plugin install BanShan-Alec/skills`. Copilot has deprecated direct repo installs, and they can't auto-update. The `extraKnownMarketplaces` entry follows the documented schema, but nobody has run it yet.
 
 <canonical-block name="copilot">
 
 ```bash
-copilot plugin marketplace add mattpocock/skills
+copilot plugin marketplace add BanShan-Alec/skills
 copilot plugin install mattpocock-skills@mattpocock
 ```
 
@@ -62,24 +62,24 @@ Then, once, add to `~/.copilot/settings.json`:
 ```json
 {
   "extraKnownMarketplaces": {
-    "mattpocock": { "source": { "source": "github", "repo": "mattpocock/skills" }, "autoUpdate": true }
+    "mattpocock": { "source": { "source": "github", "repo": "BanShan-Alec/skills" }, "autoUpdate": true }
   }
 }
 ```
 
-In VS Code, run **Chat: Install Plugin From Source** and enter `https://github.com/mattpocock/skills`. It updates daily.
+In VS Code, run **Chat: Install Plugin From Source** and enter `https://github.com/BanShan-Alec/skills`. It updates daily.
 
 </canonical-block>
 
 ## Gemini CLI
 
-Gemini doesn't read `.claude-plugin`, and `--path` takes one bucket. One install per promoted bucket gives exactly the promoted set (27 skills, verified 2026-10-07).
+Gemini doesn't read `.claude-plugin`, and `--path` takes one bucket. One install per promoted bucket gives exactly the promoted set (28 skills).
 
 <canonical-block name="gemini">
 
 ```bash
-gemini skills install https://github.com/mattpocock/skills.git --path skills/engineering
-gemini skills install https://github.com/mattpocock/skills.git --path skills/productivity
+gemini skills install https://github.com/BanShan-Alec/skills.git --path skills/engineering
+gemini skills install https://github.com/BanShan-Alec/skills.git --path skills/productivity
 ```
 
 Re-run both commands to update.
@@ -88,12 +88,12 @@ Re-run both commands to update.
 
 ## Every other agent, or editable files (skills.sh)
 
-`-a` preselects the agent. Each agent in the comment was run on 2026-10-07. Prefer skills.sh to an agent's own repo installer, such as `amp skill add` or `pi install git:…`, because those also pull in `misc/` and `in-progress/`. `npx skills update` skips skills added upstream since `add`, so the block tells users to re-run `add`.
+`-a` preselects the agent. Each agent in the comment was run on 2026-10-07. Prefer skills.sh to an agent's own repo installer, such as `amp skill add` or `pi install git:…`. `npx skills update` skips skills added upstream since `add`, so the block tells users to re-run `add`.
 
 <canonical-block name="other-agents">
 
 ```bash
-npx skills@latest add mattpocock/skills -a <agent>  # cursor, opencode, devin, windsurf, amp, pi; omit -a to choose
+npx skills@latest add BanShan-Alec/skills -a <agent>  # cursor, opencode, devin, windsurf, amp, pi; omit -a to choose
 ```
 
 When the installer asks which skills to take, include `setup-matt-pocock-skills`. To update, run `npx skills@latest update`, and re-run `add` to pick up new skills.
@@ -105,7 +105,7 @@ Use the single-skill form wherever one skill is named on its own. `docs/` pages 
 <canonical-block name="skills-sh-one-skill">
 
 ```bash
-npx skills@latest add mattpocock/skills --skill=<name>
+npx skills@latest add BanShan-Alec/skills --skill=<name>
 ```
 
 ```bash
