@@ -17,7 +17,7 @@ A **flow** is a path through the skills. Most paths run along one **main flow**,
 
 The route most work travels. You have an idea and want it built.
 
-1. **Sharpen the idea.** Start with **`/brainstorming`** when the idea is still vague and no design exists: it explores intent in conversation, runs the decision tree through `/grilling`, and stops at an approved design, then hands off to `/to-spec`. Start with **`/grill-with-docs`** when a design or plan already exists: it is stateful, retaining what it learns in `GLOSSARY.md` and ADRs. No working directory? Use `/grill-me` instead, covered under Standalone. All three run the same `/grilling` primitive; the difference is whether a design already exists, whether there is a repo to leave a paper trail in, and whether you want a spec handoff.
+1. **Sharpen the idea.** Start with **`/brainstorming`** when the idea is still vague and no design exists: it explores intent in conversation, runs the decision tree through `/grilling`, and stops at an approved design, then hands off to `/to-spec`. Start with **`/grill-with-docs`** when a design or plan already exists: it is stateful, retaining what it learns in `GLOSSARY.md` and ADRs. No working directory? Use `/grill-me` instead, covered under Standalone. All three run the same `grilling` primitive; the difference is whether a design already exists, whether there is a repo to leave a paper trail in, and whether you want a spec handoff.
 2. **Branch: can you settle every question in conversation?** If a question needs a runnable answer (state, business logic, a UI you have to see), detour through a prototype, bridged by **`/handoff`** in both directions (a prototype lives in its own directory, which is exactly what `/handoff` is for; see Phase boundaries):
    - **`/handoff`** out, then open a fresh session against that file,
    - **`/prototype`** to answer the question with throwaway code,
@@ -58,7 +58,7 @@ A starting situation that generates work, then merges onto the main flow.
 
 ## Choosing between brainstorming, grill-me, and grill-with-docs
 
-These three are the closest neighbours in the set. They all run the `/grilling` primitive; the choice is about what exists before you start and what should exist after.
+These three are the closest neighbours in the set. They all run the `grilling` primitive; the choice is about what exists before you start and what should exist after.
 
 | What you have | Skill | What it leaves behind |
 | --- | --- | --- |
@@ -66,7 +66,7 @@ These three are the closest neighbours in the set. They all run the `/grilling` 
 | A design or plan that already exists, inside a repo | **`/grill-with-docs`** | A sharper `GLOSSARY.md` and ADRs, when they qualify |
 | A plan, design, or piece of writing outside a repo, or you want no files | **`/grill-me`** | Nothing on disk; the understanding lives in the conversation |
 
-`/brainstorming` is the front door. It starts with open exploration (why, for whom, what success looks like) and two or three approaches. `/grill-with-docs` starts with a design that already exists and pressure-tests it. `/grill-me` is the same interview with no repo and no paper trail. If you want the interview with no wrapper, use **`/grilling`** directly. `brainstorming` never writes a design document or a plan; `/to-spec` and `/to-tickets` own those artifacts.
+`/brainstorming` is the front door. It starts with open exploration (why, for whom, what success looks like) and two or three approaches. `/grill-with-docs` starts with a design that already exists and pressure-tests it. `/grill-me` is the same interview with no repo and no paper trail. If a skill needs the interview with no wrapper, it calls **`grilling`** directly; as a user, use **`/grill-me`** or **`/grill-with-docs`**. `brainstorming` never writes a design document or a plan; `/to-spec` and `/to-tickets` own those artifacts.
 
 ## Codebase health
 
@@ -98,7 +98,7 @@ Read [PHASE-BOUNDARIES.md](PHASE-BOUNDARIES.md) for the ordered tree: the five q
 Off the main flow entirely.
 
 - **`/grill-me`**: the same relentless interview as `/grill-with-docs`, but **stateless**: it saves nothing locally and builds no `GLOSSARY.md`. Reach for it when you are **not working in a working directory** (sharpening a plan, a design, a piece of writing, anything with no repo under it). If you are in a working directory, use `/grill-with-docs` instead: it runs the same interview and leaves a paper trail, so it is strictly the better one. If the idea is still vague and no design exists, use `/brainstorming` instead; it does the open exploration first and hands off to `/to-spec`.
-- **`/grilling`** is the interview primitive itself: rounds, the frontier, facts are the agent's job and decisions are yours. `/grill-me` and `/grill-with-docs` are the two named ways in, and `/triage`, `/wayfinder` and `/improve-codebase-architecture` all run it internally. Reach for it directly only when you want the interview with no wrapper around it.
+- **`grilling`** is the model-only interview primitive: rounds, the frontier, facts are the agent's job and decisions are yours. `/grill-me` and `/grill-with-docs` are the two named ways in, and `/triage`, `/wayfinder` and `/improve-codebase-architecture` all run it internally. The model calls it; users reach it through `/grill-me` or `/grill-with-docs`.
 - **`/prototype`** is a small, throwaway program that answers one design question: does this state model feel right, or what should this UI look like. Throwaway is a constraint on how the code is written, not a promise to destroy it: the answer folds into the real code, and the prototype itself is kept as a **primary source** on a `prototype/<name>` branch out of main, pointed at from the implementation issue. It's the detour in step 2 of the main flow, but reach for it any time a design question is hard to settle on paper.
 - **`/research`**: delegate reading legwork to a **background agent**: it investigates a question against **primary sources**, then leaves a cited Markdown file in the repo. Keep working while it reads. The file it produces is something to take *into* the main flow at `/grill-with-docs`, since research feeds the thinking rather than replacing it.
 - **`/to-questionnaire`** comes in when the thing blocking you isn't in your head or the codebase but in **someone else's**, and it writes them a questionnaire to fill in. It's the inverse of `/grill-me`: instead of interviewing you about the subject, it interviews you about the **send** (who it's going to, what you need back) and aims the questions at the gap. What comes back is material for `/grill-with-docs` or `/to-spec`.
