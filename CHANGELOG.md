@@ -1,5 +1,19 @@
 # mattpocock-skills
 
+## 1.4.0
+
+### Minor Changes
+
+- [`98b000f`](https://github.com/mattpocock/skills/commit/98b000fb5a70de23f7bbf61f6118e3b3df477954) Thanks [@BanShan-Alec](https://github.com/BanShan-Alec)! - Add `brainstorming`, a user-invoked Matt-flow front door. It explores intent in conversation, hands the decision tree to `grilling`, records terms and ADRs through `domain-modeling` when they qualify, and hands off to `to-spec` and `to-tickets`. It writes no design or plan files and has no visual companion; runnable visual questions go through `prototype`.
+
+### Patch Changes
+
+- [`dcecca1`](https://github.com/mattpocock/skills/commit/dcecca13af29c69fe5b4f2a50a449de1dec764d7) Thanks [@BanShan-Alec](https://github.com/BanShan-Alec)! - `ask-matt` now routes a vague idea to `brainstorming` before the spec flow and draws the line between `brainstorming`, `grill-me`, and `grill-with-docs` by whether a design already exists, whether there is a working directory, and whether you want a paper trail.
+
+- [`1e57708`](https://github.com/mattpocock/skills/commit/1e57708758d5c70020795349aed393c7eff91b51) Thanks [@BanShan-Alec](https://github.com/BanShan-Alec)! - `grilling` is now model-only: `user-invocable: false` hides it from the `/` menu in Claude Code while the model can still call it through the Skill tool. Use `grill-me` or `grill-with-docs` as the user-facing entry points.
+
+- [#1342](https://github.com/mattpocock/skills/pull/1342) [`a496f55`](https://github.com/mattpocock/skills/commit/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa) Thanks [@mattpocock](https://github.com/mattpocock)! - `implement-spec` now uses a fresh implementer subagent for each ticket and for the code-review fixes, instead of reusing an earlier implementer.
+
 ## 1.3.2
 
 ### Patch Changes
