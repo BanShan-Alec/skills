@@ -33,12 +33,15 @@
 | 技能数量 | 39 个：27 个正式发布，8 个 in-progress，4 个 misc | 28 个正式发布 |
 | `brainstorming` | 没有 | 面向模糊想法的 user-invoked 前门 |
 | 技能描述 | 英文 | 简洁中文，Matt 技能带 `[matt]` 前缀 |
+| 语言支持 | 纯英文 prompt 与模板 | 全局语言自适应，子代理与工单/规格/PR 模板直接双语内联支持 |
 | 文档链接 | `aihero.dev` 绝对外链 | GitHub 上可解析的相对链接 |
 | 安装入口 | `mattpocock/skills` | GitHub 和 skills.sh 指向 `BanShan-Alec/skills` |
 
 `brainstorming` 是唯一新增的技能。它保留开放式探索，然后把决策树交给 `grilling`，在满足条件时通过 `domain-modeling` 记录术语和 ADR，停在已经批准的设计上。它不写 design document 或 plan，也没有 visual companion；之后运行 `/to-spec` 和 `/to-tickets`。
 
 `misc/` 和 `in-progress/` 两个 bucket 已删除，插件和文档只覆盖正式发布的技能集。
+
+全库进行了中文友好度与双语自适应优化：全局注入语言自适应原则，让代理跟随用户母语；在子代理（Subagent）派发中传递语言上下文；在 `/to-spec`、`/to-tickets`、`/pr`、`/triage`、`/to-questionnaire`、`/wizard` 等技能中直接采用内联双语支持，彻底消除中英频繁切换的割裂感，且完全兼容原有执行逻辑。
 
 ## 安装（30 秒完成）
 
@@ -269,7 +272,7 @@ npx skills@latest add BanShan-Alec/skills -a <agent>  # cursor, opencode, devin,
 - **[handoff](./skills/productivity/handoff/SKILL.md)**：把当前对话压缩成交接文档，让另一个 agent 继续工作。
 - **[teach](./skills/productivity/teach/SKILL.md)**：跨多次会话教用户一个新技能或概念，用当前目录作为有状态的教学校验空间。
 - **[to-questionnaire](./skills/productivity/to-questionnaire/SKILL.md)**：把一个你无法独自回答的决策变成 Markdown 问卷，交给唯一能回答的人，可异步填写，也可在会议上一起填。它追问的是“发送”（给谁、需要拿回什么），不是主题本身。
-- **[wait-what](./skills/productivity/wait-what/SKILL.md)**：当一条消息没听懂时立刻使用。Agent 会用你缺失的上下文、用简单英语、使用你的 `GLOSSARY.md` 词汇重新讲一遍。
+- **[wait-what](./skills/productivity/wait-what/SKILL.md)**：当一条消息没听懂时立刻使用。Agent 会用你缺失的上下文、用通俗易懂的语言（跟随用户语言，中文会话使用浅白技术中文）、使用你的 `GLOSSARY.md` 词汇重新讲一遍。
 
 **Model-invoked**
 
