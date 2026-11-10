@@ -71,11 +71,11 @@ Do NOT close or modify any parent issue.
 
 # <NN>: <Ticket title>
 
-**What to build:** the end-to-end behaviour this ticket makes work, from the user's perspective, not a layer-by-layer implementation list.
+**What to build / 目标功能:** the end-to-end behaviour this ticket makes work, from the user's perspective, not a layer-by-layer implementation list.
 
-**Blocked by:** the numbers/titles of the tickets that gate this one, or "None (can start immediately)".
+**Blocked by / 前置阻塞:** the numbers/titles of the tickets that gate this one, or "None (can start immediately)" / "无（可立即开始）".
 
-**Status:** ready-for-agent
+**Status / 状态:** ready-for-agent
 
 - [ ] Acceptance criterion 1
 - [ ] Acceptance criterion 2
@@ -84,22 +84,22 @@ Do NOT close or modify any parent issue.
 
 <issue-template>
 
-## Parent
+## Parent / 父工单
 
 A reference to the parent issue on the tracker (if the source was an existing issue, otherwise omit this section).
 
-## What to build
+## What to build / 目标功能
 
 The end-to-end behaviour this ticket makes work, from the user's perspective, not layer-by-layer implementation.
 
-## Acceptance criteria
+## Acceptance criteria / 验收条件
 
 - [ ] Criterion 1
 - [ ] Criterion 2
 
-## Blocked by
+## Blocked by / 前置阻塞
 
-- A reference to each blocking ticket, or "None (can start immediately)". Omit this section when blockers were set as native edges.
+- A reference to each blocking ticket, or "None (can start immediately)" / "无（可立即开始）". Omit this section when blockers were set as native edges.
 
 </issue-template>
 
