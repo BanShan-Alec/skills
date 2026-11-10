@@ -226,7 +226,7 @@ npx skills@latest add BanShan-Alec/skills -a <agent>  # cursor, opencode, devin,
 
 ## 参考
 
-这些技能按一个维度划分：谁能调用它们。**User-invoked** 技能只有你输入时才可达（例如 `/grill-me`），职责是编排。**Model-invoked** 技能可以由你调用，也可以在任务匹配时由 agent 自动触达，承载可复用的纪律。User-invoked 技能可以调用 model-invoked 技能，但永远不能调用另一个 user-invoked 技能。
+这些技能按一个维度划分：谁能调用它们。**User-invoked** 技能只有你输入时才可达（例如 `/grill-me`），职责是编排。**Model-invoked** 技能可以由你调用，也可以在任务匹配时由 agent 自动触达，承载可复用的纪律。少数技能是 model-only，隐藏于 `/` 菜单，模型仍可通过 Skill 工具调用。User-invoked 技能可以调用 model-invoked 技能，但永远不能调用另一个 user-invoked 技能。
 
 ### Engineering
 
@@ -273,5 +273,5 @@ npx skills@latest add BanShan-Alec/skills -a <agent>  # cursor, opencode, devin,
 
 **Model-invoked**
 
-- **[grilling](./skills/productivity/grilling/SKILL.md)**：围绕计划、决策或想法持续追问，直到设计树的每个分支都解决。它是 `grill-me`、`grill-with-docs`、`triage`、`wayfinder` 和 `improve-codebase-architecture` 背后的可复用访谈原语。
+- **[grilling](./skills/productivity/grilling/SKILL.md)**：围绕计划、决策或想法持续追问，直到设计树的每个分支都解决。它是 `grill-me`、`grill-with-docs`、`triage`、`wayfinder` 和 `improve-codebase-architecture` 背后的可复用访谈原语。Model-only：模型调用它，用户通过 `/grill-me` 或 `/grill-with-docs` 使用。
 - **[writing-for-agents](./skills/productivity/writing-for-agents/SKILL.md)**：编写给 agent 看的文档：技能、AGENTS.md/CLAUDE.md，以及任何通过指针被 agent 读取的文档。

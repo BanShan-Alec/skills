@@ -6,9 +6,9 @@ It does not ask one question at a time, and it does not ask everything at once. 
 
 ## When to reach for it
 
-Type `/grilling`, or the [agent](https://www.aihero.dev/ai-coding-dictionary/agent) reaches for it on its own when a task fits. It is the only [skill](https://www.aihero.dev/ai-coding-dictionary/skill) in the grilling family that is model-invoked, so you rarely type it. Usually a skill you *did* type runs it for you.
+This is a model-only skill. It is hidden from the `/` menu, and the [agent](https://www.aihero.dev/ai-coding-dictionary/agent) calls it when a task fits. You normally reach it through [grill-me](./grill-me.md) or [grill-with-docs](../engineering/grill-with-docs.md), or through another skill that uses it.
 
-Typing `/grilling` directly gets you the plain interview and nothing else. Where you want something more than that:
+Calling `grilling` directly, as a skill author, gets you the plain interview and nothing else. Where you want something more than that:
 
 | What you have | Reach for |
 | --- | --- |
@@ -16,7 +16,7 @@ Typing `/grilling` directly gets you the plain interview and nothing else. Where
 | You are in a working directory | [grill-with-docs](../engineering/grill-with-docs.md): the same session, and it writes `GLOSSARY.md` and ADRs as it goes |
 | An effort too big to hold in one session | [wayfinder](../engineering/wayfinder.md): it charts a map and runs grilling inside the decision tickets |
 | A question that talking cannot settle: how something should look or feel | [prototype](../engineering/prototype.md): build the throwaway version, then come back |
-| A skill of your own that needs an interview | Invoke `/grilling` from it, rather than writing another interview |
+| A skill of your own that needs an interview | Call the Skill tool with `grilling` from it, rather than writing another interview |
 
 ## The round, the frontier, and who decides
 
@@ -67,7 +67,7 @@ That is a bug in the run, and it is the reason the skill's text separates facts 
 No, and a cap is out of scope on purpose. Some plans need three questions and some need fifty; a fixed ceiling either truncates the hard case or feels arbitrary on the easy one. The intended control is plain language. Tell it to wrap up, or stop and accept the plan where it stands. If a session is running very long, the cause is usually that the scope was too big; break the work up and grill the pieces.
 
 **I installed `grill-me` on its own and nothing happens.**
-`grill-me` is a one-line skill whose whole body is "run a `/grilling` session", so it needs this skill installed too. The same is true of `grill-with-docs`, which additionally needs [domain-modeling](../engineering/domain-modeling.md). Installing the whole set avoids the problem; installing selectively means installing the primitives as well.
+`grill-me` is a one-line skill whose whole body is "run a `grilling` session", so it needs this skill installed too. The same is true of `grill-with-docs`, which additionally needs [domain-modeling](../engineering/domain-modeling.md). Installing the whole set avoids the problem; installing selectively means installing the primitives as well.
 
 **`grill-with-docs` ran, but it never loaded `grilling`.**
 This is a real bug, still unfixed, and users report it across [harnesses](https://www.aihero.dev/ai-coding-dictionary/harness) and models. A skill that names another skill does not reliably cause that skill to load, and `grill-with-docs` names two. The sign is a session that asks everything at once with no recommendations. That means the model is improvising an interview rather than running this one. Asking the agent directly whether it loaded `grilling` and `domain-modeling` usually recovers it.

@@ -39,30 +39,30 @@ State what is out of scope. This prevents the agent from gold-plating or making 
 ## Template
 
 ```markdown
-## Agent Brief
+## Agent Brief / 代理执行简报
 
-**Category:** bug / enhancement
-**Summary:** one-line description of what needs to happen
+**类别 / Category:** bug / enhancement
+**简述 / Summary:** one-line description of what needs to happen
 
-**Current behavior:**
+**当前行为 / Current behavior:**
 Describe what happens now. For bugs, this is the broken behavior.
 For enhancements, this is the status quo the feature builds on.
 
-**Desired behavior:**
+**预期行为 / Desired behavior:**
 Describe what should happen after the agent's work is complete.
 Be specific about edge cases and error conditions.
 
-**Key interfaces:**
+**关键接口 / Key interfaces:**
 - `TypeName`: what needs to change and why
 - `functionName()` return type: what it currently returns vs what it should return
 - Config shape: any new configuration options needed
 
-**Acceptance criteria:**
+**验收条件 / Acceptance criteria:**
 - [ ] Specific, testable criterion 1
 - [ ] Specific, testable criterion 2
 - [ ] Specific, testable criterion 3
 
-**Out of scope:**
+**范围边界 / Scope boundaries:**
 - Thing that should NOT be changed or addressed in this issue
 - Adjacent feature that might seem related but is separate
 ```
