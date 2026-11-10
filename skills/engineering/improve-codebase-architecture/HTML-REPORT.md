@@ -4,12 +4,15 @@ The architectural review is rendered as a single self-contained HTML file in the
 
 ## Scaffold
 
+Note on CDNs: in offline or domestic intranet environments where `cdn.tailwindcss.com` or `cdn.jsdelivr.net` might be slow or blocked, inline fallback styles or local/mirror script URLs can be used.
+
 ```html
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN"> <!-- or match conversation language, e.g. <html lang="en"> -->
   <head>
     <meta charset="utf-8" />
     <title>Architecture review for {{repo name}}</title>
+    <!-- In offline or domestic intranet environments where cdn.tailwindcss.com or cdn.jsdelivr.net might be slow or blocked, inline fallback styles or local/mirror script URLs can be used -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module">
       import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
@@ -44,13 +47,15 @@ The diagrams carry the weight. Prose is sparse, plain, and uses the glossary ter
 Each candidate is one `<article>`:
 
 - **Title**: short, names the deepening (e.g. "Collapse the Order intake pipeline").
-- **Badge row**: recommendation strength (`Strong` = emerald, `Worth exploring` = amber, `Speculative` = slate), plus a tag for the dependency category (`in-process`, `local-substitutable`, `ports & adapters`, `mock`).
-- **Files**: monospaced list, `font-mono text-sm`.
+- **Badge row**: recommendation strength (`强烈建议 / Strong` = emerald, `值得探索 / Worth exploring` = amber, `设想探讨 / Speculative` = slate), plus a tag for the dependency category (`in-process`, `local-substitutable`, `ports & adapters`, `mock`).
+- **文件 / Files**: monospaced list, `font-mono text-sm`.
 - **Before / After diagram**: the centrepiece. Two columns, side by side. See patterns below.
-- **Problem**: one sentence. What hurts.
-- **Solution**: one sentence. What changes.
-- **Wins**: bullets, ≤6 words each. e.g. "Tests hit one interface", "Pricing logic stops leaking", "Delete 4 shallow wrappers".
+- **问题 / Problem**: one sentence. What hurts.
+- **解决方案 / Solution**: one sentence. What changes.
+- **收益 / Wins**: bullets, ≤6 words each. e.g. "Tests hit one interface", "Pricing logic stops leaking", "Delete 4 shallow wrappers".
 - **ADR callout** (if applicable): one line in an amber-tinted box.
+
+Section fields across the report use direct bilingual inline formatting: `文件 / Files`, `问题 / Problem`, `解决方案 / Solution`, `收益 / Wins`, and `顶级建议 / Top recommendation`.
 
 No paragraphs of explanation. If the diagram needs a paragraph to be understood, redraw the diagram.
 
@@ -97,9 +102,9 @@ Before: a tree of function calls rendered as nested boxes. After: the same tree 
 - Colour sparingly: one accent (emerald or indigo) plus red for leakage and amber for warnings.
 - Keep diagrams ~320px tall so before/after sits comfortably side by side without scrolling.
 - Use `text-xs uppercase tracking-wider` for module labels inside diagrams, so they read as schematic, not as UI.
-- The only scripts are the Tailwind CDN and the Mermaid ESM import. The report is otherwise static: no app code, no interactivity beyond Mermaid's own rendering.
+- The only scripts are the Tailwind CDN and the Mermaid ESM import. The report is otherwise static: no app code, no interactivity beyond Mermaid's own rendering. In offline or domestic intranet environments where `cdn.tailwindcss.com` or `cdn.jsdelivr.net` might be slow or blocked, inline fallback styles or local/mirror script URLs can be used.
 
-## Top recommendation section
+## 顶级建议 / Top recommendation section
 
 One larger card. Candidate name, one sentence on why, anchor link to its card. That's it.
 
@@ -118,6 +123,6 @@ Plain English, concise, but the architectural nouns and verbs come straight from
 - "Deepen: one interface, one place to test."
 - "Two adapters justify the seam: HTTP in prod, in-memory in tests."
 
-**Wins bullets** name the gain in glossary terms: *"locality: bugs concentrate in one module"*, *"leverage: one interface, N call sites"*, *"interface shrinks; implementation absorbs the wrappers"*. Don't write *"easier to maintain"* or *"cleaner code"*, because those terms aren't in the glossary and don't earn their place.
+**收益 / Wins bullets** name the gain in glossary terms: *"locality: bugs concentrate in one module"*, *"leverage: one interface, N call sites"*, *"interface shrinks; implementation absorbs the wrappers"*. Don't write *"easier to maintain"* or *"cleaner code"*, because those terms aren't in the glossary and don't earn their place.
 
 No hedging, no throat-clearing, no "it's worth noting that…". If a sentence could be a bullet, make it a bullet. If a bullet could be cut, cut it. If a term isn't in the `/codebase-design` glossary, reach for one that is before inventing a new one.
