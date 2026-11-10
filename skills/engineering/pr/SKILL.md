@@ -13,22 +13,22 @@ metadata:
 Use this template for writing the PR body:
 
 ```markdown
-## Summary
+## 变更摘要 / Summary
 
 <diagram, diff-sketch, or tree>
 
-## Evidence
+## 验证证据 / Evidence
 
-- **Before:** <screenshot/output/failing test run>
-  **After:** <screenshot/output/passing test run>
+- **变更前 / Before:** <screenshot/output/failing test run>
+  **变更后 / After:** <screenshot/output/passing test run>
 
-## Merge Danger
+## 合并风险 / Merge Danger
 
-**Door:** <one-way or two-way>
+**单向门或双向门 / Door:** <one-way or two-way>
 
 <optional: description>
 
-**Blast Radius:** <one-word description>
+**影响范围 / Blast Radius:** <one-word description>
 
 <optional: potential ramifications of merge>
 ```
