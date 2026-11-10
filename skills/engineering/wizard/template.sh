@@ -43,8 +43,8 @@ banner() {
   printf '%s  %s stages%s\n\n' "$DIM" "$TOTAL_STAGES" "$RESET"
   printf '%s  You drive the browser; this wizard tells you exactly what to do and\n' "$DIM"
   printf '  captures the values you copy back. Stop any time with Ctrl-C and re-run\n'
-  printf '  later, since it remembers values already saved.%s\n' "$RESET"
-  pause "Ready to start?"
+  printf '  later, since it remembers values already saved. / 你只需操作浏览器，向导会提示具体操作并保存回传结果。随时可按 Ctrl-C 退出，重新运行会记住已保存值。%s\n' "$RESET"
+  pause "Ready to start? / 准备开始吗？"
 }
 
 # stage "Name" clears the screen, then announces a stage and shows progress.
@@ -77,15 +77,13 @@ open_url() {
 
 # pause "msg" waits for the human to confirm they've done the manual part.
 pause() {
-  printf '  %s%s%s ' "$DIM" "${1:-Press Enter to continue}" "$RESET"
-  read -r _ || true
+  read -r -p "  ${1:-Press Enter to continue... / 按回车键继续...} " _
 }
 
 # confirm "question" is a y/N gate; returns success on yes.
 confirm() {
   local reply=""
-  printf '  %s? %s [y/N] ' "$YELLOW" "$1"
-  read -r reply || true
+  read -r -p "  $1 [Y/n] / 是否确认 [Y/n]: " reply
   [[ "$reply" =~ ^[Yy] ]]
 }
 
